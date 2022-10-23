@@ -1,4 +1,4 @@
-# ---EXAMPLES OF ORDINARY INSTANCE OF FLASK APP---
+""" ---EXAMPLES OF ORDINARY INSTANCE OF FLASK APP---
 # from flask import Flask
 
 # app = Flask(__name__)
@@ -10,7 +10,7 @@
 # if __name__ == '__main__':
 #     app.run()
 
-
+"""
 from flask import Flask, jsonify, request
 from http import HTTPStatus
 
@@ -26,14 +26,17 @@ recipes = [
                     'name': 'Tomato Pasta', 
                     'description': 'This is a lovely tomato pasta recipe.'   
                 },
+                
                 {  'id': 3, 
                     'name': 'Ewagoyin', 
                     'description': 'This is a savouring type of beans.'   
                 },
+
                 {  'id': 4, 
                     'name': 'Afang', 
                     'description': 'This is a lovely soup made of vegetables'   
                 },
+
                 {  'id': 5, 
                     'name': 'Oil Sauce', 
                     'description': 'This is a oil soup without actual oil.'   
@@ -74,6 +77,7 @@ def create_recipe():
     }
     recipes.append(recipe)
     # when succesful it will return the below
+    
     return jsonify(recipe), HTTPStatus.CREATED
 
 
@@ -84,8 +88,8 @@ def update_recipe(recipe_id):
 
     if not recipe:
         return jsonify({'message': 'recipe not found'}), HTTPStatus.NOT_FOUND
-    mydata = request.get_json()
 
+    mydata = request.get_json()
     recipe.update(
                     {
                         'name': mydata.get('name'),
